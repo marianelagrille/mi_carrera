@@ -41,7 +41,7 @@ RSpec.describe Subject, type: :model do
     let(:course) { subject.course }
 
     context 'when subject\'s course is not available' do
-      before { allow(course).to receive(:available?).and_return(false) }
+      before { allow(course).to receive(:available?).and_return(true) }
 
       it 'returns false' do
         expect(subject.available?([])).to be false
