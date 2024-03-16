@@ -4,4 +4,12 @@ class Review < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :subject_id, message: "You can only review a subject once." }
   validates :rating, presence: true, inclusion: { in: 1..5 }
+
+  after_commit :update_subject_rating
+
+  private
+
+  def update_subject_rating
+    subject.update_rating
+  end
 end
