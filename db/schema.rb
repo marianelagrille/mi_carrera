@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_05_231624) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_16_053425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_231624) do
     t.string "eva_id"
     t.string "code"
     t.string "category", default: "optional"
+    t.float "average_rating"
     t.index ["code"], name: "index_subjects_on_code", unique: true
   end
 
