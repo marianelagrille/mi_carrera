@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   end
 
   resource :user_onboardings, only: :update
+
+  resources :reviews, only: [:create, :update, :destroy]
 end
