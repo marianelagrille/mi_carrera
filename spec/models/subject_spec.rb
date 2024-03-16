@@ -84,4 +84,25 @@ RSpec.describe Subject, type: :model do
       expect(Subject.ordered_by_category_and_name).to eq([s1, s3, s2])
     end
   end
+
+  describe '#update_rating' do
+    let(:subject) { create :subject }
+
+    context 'when there are no reviews' do
+      it 'updates average rating' do
+        subject.update_rating
+        expect(subject.average_rating).to eq(nil)
+      end
+    end
+
+    context 'when there are reviews' do
+      let!(:review) { create :review, subject: subject, rating: 5 }
+      let!(:another_review) { create :review, subject: subject, rating: 3 }
+
+      it 'updates average rating' do
+        subject.update_rating
+        expect(subject.average_rating).to eq(4)
+      end
+    end
+  end
 end
